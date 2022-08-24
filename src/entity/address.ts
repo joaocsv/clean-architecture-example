@@ -9,7 +9,9 @@ export default class Address {
     this._number = number
     this._zip = zip
     this._city = city
-   }
+    
+    this.validate()
+  }
 
    validate () {
     if (this._street.length === 0) {
@@ -21,7 +23,7 @@ export default class Address {
     }
 
     if (this._zip.length === 0) {
-      throw new Error('Zip is required')
+      throw new Error('Zip Code is required')
     }
 
     if (this._city.length === 0) {
