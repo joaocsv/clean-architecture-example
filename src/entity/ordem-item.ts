@@ -1,4 +1,4 @@
-class OrdemItem {
+export default class OrdemItem {
   _id: string
   _name: string
   _price: number

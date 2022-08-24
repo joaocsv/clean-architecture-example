@@ -43,7 +43,7 @@ export default class Customer {
     this._address = address
   }
 
-  validate (): void {
+  private validate (): void {
     if (this._id.length == 0) {
       throw Error('Id is required')
     }
