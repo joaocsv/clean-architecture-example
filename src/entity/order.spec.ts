@@ -23,15 +23,15 @@ describe('Order unit tests', () => {
   })
 
   test('Should calculate total', () => {
-    const item = new OrderItem('123', 'item 1', 100)
-    const item2 = new OrderItem('321', 'item 2', 200)
+    const item = new OrderItem('123', 'item 1', '232', 100, 2)
+    const item2 = new OrderItem('321', 'item 2', '232', 200, 3)
 
     const order = new Order('321', '232', [item])
 
-    expect(order.total).toBe(100)
+    expect(order.total).toBe(200)
 
     const order2 = new Order ('321', '355', [item, item2])
 
-    expect(order2.total).toBe(300)
+    expect(order2.total).toBe(800)
   })
 })

@@ -20,7 +20,7 @@ export default class Order {
   }
 
   private calculateTotal (): number {
-    return this._items.reduce((sum, item) => sum + item._price, 0)
+    return this._items.reduce((sum, item) => sum + item.total, 0)
   }
 
   private validate () {
