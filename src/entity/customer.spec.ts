@@ -56,6 +56,19 @@ describe('Customer unit tests', () => {
     customer.deactived()
     
     expect(customer.isActive).toBe(false)
+  })
 
+  test('Should add rewards points', () => {
+    const customer = new Customer('2', 'João')
+    
+    expect(customer.rewardPoints).toBe(0)
+
+    customer.addRewardPoints(10)
+
+    expect(customer.rewardPoints).toBe(10)
+
+    customer.addRewardPoints(5)
+
+    expect(customer.rewardPoints).toBe(15)
   })
 })
