@@ -34,4 +34,19 @@ describe('Order unit tests', () => {
 
     expect(order2.total).toBe(800)
   })
+
+  test('Should change items', () => {
+    const item = new OrderItem('123', 'item 1', '232', 100, 2)
+    const order = new Order('321', '232', [item])
+
+    expect(order.items).toEqual([item])
+    expect(order.total).toEqual(200)
+
+
+    const item2 = new OrderItem('321', 'item 2', '232', 200, 3)
+    order.changeItems([item2])
+
+    expect(order.items).toEqual([item2])
+    expect(order.total).toEqual(600)
+  })
 })

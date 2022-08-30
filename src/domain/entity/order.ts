@@ -10,17 +10,36 @@ export default class Order {
     this._id = id
     this._customerId = customerId
     this._items = items
-    this._total = this.calculateTotal()
-
+    
+    this.calculateTotal()
     this.validate()
+  }
+
+  get id (): string {
+    return this._id
+  }
+
+  get customerId (): string {
+    return this._customerId
+  }
+
+  get items (): OrderItem[] {
+    return this._items
   }
 
   get total (): number {
     return this._total
   }
 
-  private calculateTotal (): number {
-    return this._items.reduce((sum, item) => sum + item.total, 0)
+  private calculateTotal (): void {
+    this._total = this._items.reduce((sum, item) => sum + item.total, 0)
+  }
+
+  changeItems (items: OrderItem[]): void {
+    this._items = items
+
+    this.validate()
+    this.calculateTotal()
   }
 
   private validate () {
