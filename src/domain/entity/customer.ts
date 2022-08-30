@@ -5,7 +5,7 @@ export default class Customer {
   private _name: string
   private _address!: Address
   private _active: boolean = false
-  private _rewardPoints = 0
+  private _rewardPoints: number = 0
 
   constructor (id: string, name: string) {
     this._id = id
@@ -30,14 +30,18 @@ export default class Customer {
     return this._rewardPoints
   }
 
-  set address (address: Address) {
-    this._address = address
+  get address () {
+    return this._address
   }
 
   changeName (name: string): void {
     this._name = name
 
     this.validate()
+  }
+
+  changeAddress (address: Address) {
+    this._address = address
   }
 
   actived (): void {
