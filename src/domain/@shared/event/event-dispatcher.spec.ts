@@ -1,6 +1,7 @@
 import EventDispatcher from './event-dispatcher'
 import SendEmailWhenProductIsCreatedHandler from '../../product/event/handler/send-email-when-product-is-created.handler'
 import ProductCreatedEvent from '../../product/event/product-created.event'
+import ShowConsoleLog1WhenCustomerIsCreatedHandler from '../../customer/event/handler/show-console-log-1-when-customer-is-created.handler'
 
 describe('Domain events tests', () => {
   it('Should register an event handler', () => {
@@ -25,6 +26,24 @@ describe('Domain events tests', () => {
     eventDispatcher.unregister('ProductCreatedEvent', eventHandler)
 
     expect(eventDispatcher.eventHandlers['ProductCreatedEvent'].length).toBe(0)
+  })
+
+  it('Should unregister all events handler', () => {
+    const eventDispatcher = new EventDispatcher()
+    
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler()
+    const eventHandler2 = new ShowConsoleLog1WhenCustomerIsCreatedHandler()
+
+    eventDispatcher.register('ProductCreatedEvent', eventHandler)
+    eventDispatcher.register('CustomerCreatedEvent', eventHandler2)
+
+
+    expect(eventDispatcher.eventHandlers['ProductCreatedEvent'][0]).toMatchObject(eventHandler)
+    expect(eventDispatcher.eventHandlers['CustomerCreatedEvent'][0]).toMatchObject(eventHandler2)
+
+    eventDispatcher.unregisterAll()
+
+    expect(eventDispatcher.eventHandlers.length).toEqual(undefined)
   })
 
   it('Should notify all events handler', () => {
