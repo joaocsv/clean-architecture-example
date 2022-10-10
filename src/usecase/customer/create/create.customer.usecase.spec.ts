@@ -9,7 +9,7 @@ const MockCustomerRepository = () => {
   }
 }
 
-const input = {
+const MakeInput = () => ({
   name: 'João C.',
   address: {
     street: 'Rua XV',
@@ -17,12 +17,14 @@ const input = {
     zip: 'Zip',
     city: 'City'
   }
-}
+})
 
 describe('Unit test create customer use case', () => {
   test('should create a customer', async () => {
     const customerRepository = MockCustomerRepository()
     const sut = new CreateCustomerUseCase(customerRepository)
+
+    const input = MakeInput()
 
     const output = await sut.execute(input)
 
@@ -42,6 +44,8 @@ describe('Unit test create customer use case', () => {
     const customerRepository = MockCustomerRepository()
     const sut = new CreateCustomerUseCase(customerRepository)
 
+    const input = MakeInput()
+
     input.name = ""
 
     const promise = sut.execute(input)
@@ -53,6 +57,8 @@ describe('Unit test create customer use case', () => {
     const customerRepository = MockCustomerRepository()
     const sut = new CreateCustomerUseCase(customerRepository)
 
+    const input = MakeInput()
+    
     input.address.street = ""
 
     const promise = sut.execute(input)
