@@ -1,4 +1,4 @@
-export interface InputUpdateCustomerUseCase {
+export interface InputUpdateCustomer {
   id: string
   name: string
   address: {
@@ -9,7 +9,7 @@ export interface InputUpdateCustomerUseCase {
   }
 }
 
-export interface OutputUpdateCustomerUseCase {
+export interface OutputUpdateCustomer {
   id: string
   name: string
   address: {

@@ -1,7 +1,6 @@
 import Address from '../../../domain/customer/value-object/address'
 import CustomerRepository from '../../../infrastructure/customer/repository/sequelize/customer.repository'
-import { OutputCreateCustomer } from '../create/create.customer.dto'
-import { InputUpdateCustomerUseCase } from './update.customer.usecase.dto'
+import { InputUpdateCustomer, OutputUpdateCustomer } from './update.customer.usecase.dto'
 
 export default class UpdateCustomerUseCase {
   private readonly customerRepository: CustomerRepository
@@ -10,7 +9,7 @@ export default class UpdateCustomerUseCase {
     this.customerRepository = customerRepository
   }
 
-  async execute (input: InputUpdateCustomerUseCase): Promise<OutputCreateCustomer> {
+  async execute (input: InputUpdateCustomer): Promise<OutputUpdateCustomer> {
     const customer = await this.customerRepository.find(input.id)
 
     customer.changeName(input.name)

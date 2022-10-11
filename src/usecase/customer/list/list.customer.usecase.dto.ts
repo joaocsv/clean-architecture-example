@@ -1,4 +1,4 @@
-export interface InputListCustomerUseCase {}
+export interface InputListCustomer {}
 
 type Customer = {
   id: string
@@ -11,6 +11,6 @@ type Customer = {
   }
 }
 
-export interface OutputListCustomerUseCase {
+export interface OutputListCustomer {
   customers: Customer[]
 }

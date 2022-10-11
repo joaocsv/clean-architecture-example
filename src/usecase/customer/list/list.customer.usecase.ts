@@ -1,6 +1,6 @@
 import Customer from '../../../domain/customer/entity/customer'
 import CustomerRepositoryInterface from '../../../domain/customer/repository/customer-repository.interface'
-import { InputListCustomerUseCase, OutputListCustomerUseCase } from './list.customer.usecase.dto'
+import { InputListCustomer, OutputListCustomer } from './list.customer.usecase.dto'
 
 export default class ListCustomerUseCase {
   private readonly customerRepository: CustomerRepositoryInterface
@@ -9,7 +9,7 @@ export default class ListCustomerUseCase {
     this.customerRepository = customerRepository
   }
 
-  async execute (input: InputListCustomerUseCase): Promise<OutputListCustomerUseCase> {
+  async execute (input: InputListCustomer): Promise<OutputListCustomer> {
     const customers = await this.customerRepository.findAll()
     
     return OutputMapper.toOutput(customers)
@@ -17,7 +17,7 @@ export default class ListCustomerUseCase {
 }
 
 class OutputMapper {
-  static toOutput (customers: Customer[]): OutputListCustomerUseCase {
+  static toOutput (customers: Customer[]): OutputListCustomer {
     return {
       customers: customers.map((customer) => ({
         id: customer.id,
