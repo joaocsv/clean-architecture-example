@@ -38,7 +38,7 @@ describe('Unit test for customer  update use case', () => {
     expect(output).toEqual(input)
   })
 
-  test('Should thrown an error when update name is missing', async () => {
+  test('Should thrown an error when name is missing', async () => {
     const customerRepository = MockRepository()
     const sut = new UpdateCustomerUseCase(customerRepository)
 
@@ -51,7 +51,7 @@ describe('Unit test for customer  update use case', () => {
     await expect(promise).rejects.toThrow("Name is required")
   })
 
-  test('Should thrown an error when update street is missing', async () => {
+  test('Should thrown an error when street is missing', async () => {
     const customerRepository = MockRepository()
     const sut = new UpdateCustomerUseCase(customerRepository)
 
