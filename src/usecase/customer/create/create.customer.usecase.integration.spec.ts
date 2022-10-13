@@ -5,7 +5,7 @@ import CustomerRepository from '../../../infrastructure/customer/repository/sequ
 import CustomerModel from '../../../infrastructure/customer/repository/sequelize/model/customer.model'
 import CreateCustomerUseCase from './create.customer.usecase'
 
-describe('Test find customer usecase', () => {
+describe('Test create customer usecase', () => {
   let sequelize: Sequelize
   
   beforeEach(async () => {
@@ -25,7 +25,7 @@ describe('Test find customer usecase', () => {
     await sequelize.close()
   })
 
-  test('should find a customer', async () => {
+  test('should create a customer', async () => {
     const customerRepository = new CustomerRepository()
     const usecase = new CreateCustomerUseCase(customerRepository)
 

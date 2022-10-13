@@ -53,6 +53,5 @@ describe('Test find customer usecase', () => {
     const result = await usecase.execute(input)
 
     expect(output).toStrictEqual(result)
-
   })
 })
