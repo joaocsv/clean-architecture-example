@@ -17,7 +17,7 @@ const MakeInput = () => {
 }
 
 describe('Unit test create product use case', () => {
-  test('should create a product', async () => {
+  test('Should create a product', async () => {
     const productRepository = MockProductRepository()
     
     const sut = new CreateProductUseCase(productRepository)
@@ -31,7 +31,7 @@ describe('Unit test create product use case', () => {
     })
   })
 
-  test('should thrown an error when name is missing', async () => {
+  test('Should thrown an error when name is missing', async () => {
     const productRepository = MockProductRepository()
     const sut = new CreateProductUseCase(productRepository)
 
@@ -44,7 +44,7 @@ describe('Unit test create product use case', () => {
     await expect(promise).rejects.toThrow('Name is required')
   })
 
-  test('should thrown an error when price is less than or equal to zero', async () => {
+  test('Should thrown an error when price is less than or equal to zero', async () => {
     const productRepository = MockProductRepository()
     const sut = new CreateProductUseCase(productRepository)
 
