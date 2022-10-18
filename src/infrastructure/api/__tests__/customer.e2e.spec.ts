@@ -65,5 +65,18 @@ describe('E2E test for customer', () => {
     const listResponse = await request(app).get('/customer')
 
     expect(listResponse.statusCode).toBe(200)
+
+    expect(listResponse.body.customers[0].name).toBe('John')
+    expect(listResponse.body.customers[0].address.street).toBe('Street')
+    expect(listResponse.body.customers[0].address.city).toBe('City')
+    expect(listResponse.body.customers[0].address.zip).toBe('Zip')
+    expect(listResponse.body.customers[0].address.number).toBe(123)
+
+    expect(listResponse.body.customers[1].name).toBe('James')
+    expect(listResponse.body.customers[1].address.street).toBe('Street 2')
+    expect(listResponse.body.customers[1].address.city).toBe('City 2')
+    expect(listResponse.body.customers[1].address.zip).toBe('Zip 2')
+    expect(listResponse.body.customers[1].address.number).toBe(4324)
+
   })
 })
