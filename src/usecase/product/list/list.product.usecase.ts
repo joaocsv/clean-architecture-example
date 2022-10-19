@@ -1,4 +1,4 @@
-import ProductInterface from '../../../domain/product/entity/product.interface'
+import ProductInterface from '../../../domain/product/entity/product.abstract'
 import ProductRepositoryInterface from '../../../domain/product/repository/product-repository.interface'
 import { InputListProduct, OutputListProduct } from './list.product.dto'
 
