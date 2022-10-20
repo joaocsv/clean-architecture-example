@@ -1,5 +1,6 @@
 import { Entity } from '../../@shared/entity/entity.abstract'
 import NotificationError from '../../@shared/notification/notification.error'
+import { ProductValidatorFactory } from '../factory/product.validator.factory'
 
 export default class ProductAbstract extends Entity {
   protected _name: string
@@ -42,26 +43,7 @@ export default class ProductAbstract extends Entity {
   private validate (): void {
     this._notification.clearErrors()
     
-    if (this._id.length === 0) {
-      this._notification.addError({
-        context: 'product',
-        message: 'Id is required'
-      })
-    }
-
-    if (this._name.length === 0) {
-      this._notification.addError({
-        context: 'product',
-        message: 'Name is required'
-      })
-    }
-
-    if (this._price == undefined || this._price <= 0) {
-      this._notification.addError({
-        context: 'product',
-        message: 'Price must be greater than zero'
-      })
-    }
+    ProductValidatorFactory.create().validate(this)
 
     if(this._notification.hasError()) {
       throw new NotificationError(this._notification.errors)
